@@ -7,7 +7,7 @@ app.use(express.json());
 let books = [];
 
 app.get('/', (_, res) => {
-  res.send('Hello, World!');
+  res.send('CRUD Book using NodeJs + Express');
 });
 
 app.listen(port, () => {
