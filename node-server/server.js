@@ -14,7 +14,7 @@ app.listen(port, () => {
 
 let books = [];
 
-app.post('/books', async (req, res) => {
+app.post('/books', (req, res) => {
   const { title, author } = req.body;
   if (!title || !author) {
     return res.status(400).send('Missing title or author');
@@ -25,7 +25,7 @@ app.post('/books', async (req, res) => {
   res.status(201).send(newBook);
 });
 
-app.get('/books', (req, res) => {
+app.get('/books', (_, res) => {
   res.json(books);
 });
 
