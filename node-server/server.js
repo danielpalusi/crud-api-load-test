@@ -6,7 +6,7 @@ app.use(express.json());
 
 let books = [];
 
-app.get('/', (_, res) => {
+app.get('/', (req, res) => {
   res.send('CRUD Book using NodeJs + Express');
 });
 
@@ -36,6 +36,8 @@ app.get('/books/:id', (req, res) => {
   }
   res.json(book);
 });
+
+//default response code: 200
 
 app.put('/books/:id', (req, res) => {
   const book = books.find(b => b.id === parseInt(req.params.id));
