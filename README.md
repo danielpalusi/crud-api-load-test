@@ -5,5 +5,5 @@ How to run:
 - Clone the repo
 - Open terminal, run "npm install"
 - Run "node ./node-server/server.js" to run the local server
-- Open other terminal, run "k6 run ./k6-scripts/load-test.js"
+- Open other terminal, run "k6 run k6-scripts/load-test.js"
 - Done
