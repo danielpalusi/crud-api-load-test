@@ -20,7 +20,6 @@ export default function () {
   check(getAllBooks, {
     'Get all books with response code 200': res => res.status === 200,
   });
-  sleep(1);
 
   // Sun 14/07/24:
   // checks: 100%,
@@ -47,7 +46,6 @@ export default function () {
   check(postData, {
     'Post book with response code 201': res => res.status === 201,
   });
-  sleep(1);
 
   // Sun 14/07/24:
   // checks: 100%,
@@ -62,7 +60,6 @@ export default function () {
   check(getBook, {
     'Get book with response code 200': res => res.status === 200,
   });
-  sleep(1);
 
   // Mon 15/07/24
   // checks: 100%
@@ -84,7 +81,6 @@ export default function () {
   check(putBook, {
     'PUT book with response code 200': res => res.status === 200,
   });
-  sleep(1);
 
   // Mon 15/07/24
   // checks: 100%
@@ -98,10 +94,11 @@ export default function () {
   check(deleteBook, {
     'DELETE book with response code 200': res => res.status === 204,
   });
+  sleep(1);
 
   // Mon 15/07/24
   // checks: 100%
   // http_req_connecting: avg=8.45µs  min=0s    med=0s     max=424µs   p(90)=0s     p(95)=0s
   // vus............................: 10
-  // iterations : 80
+  // iterations : 300
 }
