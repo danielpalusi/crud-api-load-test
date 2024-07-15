@@ -43,10 +43,26 @@ export default function () {
   check(postData, {
     'Post book with response code 201': res => res.status === 201,
   });
+  sleep(1);
 
   // Sun 14/07/24:
   // checks: 100%,
   // http_req_connecting: avg=139ns   min=0s       med=0s      max=765µs   p(90)=0s      p(95)=0s
   // vus............................: 10
   // iterations : 15364
+
+  // GET book based on id
+  const { id } = JSON.parse(postData.body);
+  const getBook = http.get(`${LOCAL_SERVER}/books/${id}`);
+
+  check(getBook, {
+    'Get book with response code 200': res => res.status === 200,
+  });
+  sleep(1);
+
+  // Mon 15/07/24
+  // checks: 100%
+  // http_req_connecting: avg=10.12µs min=0s    med=0s     max=377µs   p(90)=0s      p(95)=0s
+  // vus............................: 10
+  // iterations : 100
 }
