@@ -82,7 +82,7 @@ export default function () {
   );
 
   check(putBook, {
-    'PUT book with response code 200': res => (res.status = 200),
+    'PUT book with response code 200': res => res.status === 200,
   });
   sleep(1);
 
@@ -91,4 +91,17 @@ export default function () {
   // http_req_connecting: avg=8.2µs   min=0s    med=0s     max=531µs   p(90)=0s     p(95)=0s
   // vus............................: 10
   // iterations : 100
+
+  // DELETE book
+  const deleteBook = http.del(`${LOCAL_SERVER}/books/${id}`);
+
+  check(deleteBook, {
+    'DELETE book with response code 200': res => res.status === 204,
+  });
+
+  // Mon 15/07/24
+  // checks: 100%
+  // http_req_connecting: avg=8.45µs  min=0s    med=0s     max=424µs   p(90)=0s     p(95)=0s
+  // vus............................: 10
+  // iterations : 80
 }
