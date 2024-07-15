@@ -34,10 +34,14 @@ export default function () {
     author: 'Author A',
   };
 
+  const headers = {
+    headers: { 'Content-Type': 'application/json' },
+  };
+
   const postData = http.post(
     `${LOCAL_SERVER}/books`,
     JSON.stringify(bookFormData),
-    { headers: { 'Content-Type': 'application/json' } }
+    headers
   );
 
   check(postData, {
@@ -63,6 +67,28 @@ export default function () {
   // Mon 15/07/24
   // checks: 100%
   // http_req_connecting: avg=10.12µs min=0s    med=0s     max=377µs   p(90)=0s      p(95)=0s
+  // vus............................: 10
+  // iterations : 100
+
+  // PUT book
+  const updateFormData = {
+    title: 'Book Update Title',
+    author: 'Author Update Author',
+  };
+  const putBook = http.put(
+    `${LOCAL_SERVER}/books/${id}`,
+    JSON.stringify(updateFormData),
+    headers
+  );
+
+  check(putBook, {
+    'PUT book with response code 200': res => (res.status = 200),
+  });
+  sleep(1);
+
+  // Mon 15/07/24
+  // checks: 100%
+  // http_req_connecting: avg=8.2µs   min=0s    med=0s     max=531µs   p(90)=0s     p(95)=0s
   // vus............................: 10
   // iterations : 100
 }
